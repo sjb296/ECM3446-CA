@@ -133,7 +133,9 @@ int main()
 
   /*** Update solution by looping over time steps ***/
   /* LOOP 5 */
-  /*This loop can't be parallelised because TODO*/
+  /*This loop can't be parallelised because it's updating a solution -
+  the result of each iteration depends on previously calculated
+  solutions in the stencil resulting in a flow dependency.*/
   for (int m = 0; m < nsteps; m++)
   {
     /*** Apply boundary conditions at u[0][:] and u[NX+1][:] ***/
